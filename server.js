@@ -6,8 +6,12 @@ const express = require("express"),
 const app = express();
 
 
+// Enable dotenv
+require("dotenv").config()
+
+
 // MongoDB connection
-const mongoDB = "mongodb+srv://dbUser:AVvZxpcletpTU3DZ@node-sandbox.y7jy9.mongodb.net/node-shoutbox?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGO_URL;
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 mongoose.set('useCreateIndex', true);
 const db = mongoose.connection;
