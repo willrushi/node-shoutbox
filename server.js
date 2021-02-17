@@ -7,6 +7,7 @@ const app = express();
 
 // Import the routers
 const indexRouter = require("./routes/index");
+const apiRouter = require("./routes/api");
 
 
 // Set up public folder and bodyparser
@@ -16,7 +17,7 @@ app.use(bodyParser.json());
 
 // Implement routers
 app.use("/", indexRouter);
-
+app.use("/api", apiRouter);
 
 // Start the server
 const server = app.listen( process.env.PORT || 8000, () => {
