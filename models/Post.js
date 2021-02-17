@@ -21,6 +21,8 @@ const PostSchema = new Schema({
 // Make a model from the schema and set it as the module export
 const PostModel = module.exports = mongoose.model("PostModel", PostSchema);
 
+
+// Add a post using content and author. Returns bool success
 module.exports.addPost = async (content, author) => {
     try{
         const result = await PostModel.create({ content: content, author: author });
@@ -31,6 +33,7 @@ module.exports.addPost = async (content, author) => {
     }
 }
 
+// Retrieve all posts. Returns array of post objects
 module.exports.getPosts = async () => {
     try{
         const result = await PostModel.find({});
@@ -41,6 +44,7 @@ module.exports.getPosts = async () => {
     }
 }
 
+// Update a post by its ID. Returns bool success
 module.exports.updatePost = async (id, content) => {
     try{
         const result = await PostModel.updateOne({ _id: id }, { content: content });
@@ -53,6 +57,7 @@ module.exports.updatePost = async (id, content) => {
     
 }
 
+// Delete a post by its ID. Returns bool success
 module.exports.deletePost = async (id) => {
     try{
         const result = await PostModel.deleteOne({ _id: id });
