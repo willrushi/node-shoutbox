@@ -59,7 +59,7 @@ exports.updatePost = (req, res) => {
 }
 
 exports.deletePost = (req, res) => {
-    const { id } = req.body;
+    const { id } = req.params;
 
     // Check if id exists
     if(id == null){
@@ -68,7 +68,7 @@ exports.deletePost = (req, res) => {
     }
 
     try{
-        Post.deletePost(req.params.id)
+        Post.deletePost(id)
         .then((postDeleted) => {
             res.send({ "success": postDeleted });
         });

@@ -42,6 +42,7 @@ nav h1{
 
 .shout{
     height: 2rem;
+    padding-left: 5px;
 }
 
 .shout:nth-child(odd){
@@ -87,4 +88,8 @@ input{
     padding: 0;
     margin: 0;
     border: none;
+}
+
+.updateButton, .deleteButton{
+    float: right;
 }

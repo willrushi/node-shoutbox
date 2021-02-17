@@ -48,7 +48,6 @@ module.exports.getPosts = async () => {
 module.exports.updatePost = async (id, content) => {
     try{
         const result = await PostModel.updateOne({ _id: id }, { content: content });
-        console.log(result);
         return result.nModified > 0;
     }
     catch(e){
@@ -60,6 +59,7 @@ module.exports.updatePost = async (id, content) => {
 // Delete a post by its ID. Returns bool success
 module.exports.deletePost = async (id) => {
     try{
+        console.log(`Deleting ${id}`)
         const result = await PostModel.deleteOne({ _id: id });
         return result.deletedCount > 0;
     } 
