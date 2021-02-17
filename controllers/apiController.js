@@ -1,21 +1,66 @@
 const Post = require("../models/Post");
 
 exports.newPost = (req, res) => {
-    Post.AddPost("test","Will");
-    res.send("added post");
-}
+    const { content, author } = req.body;
+    
+    if (content == null || author == null) {
+        res.send({ "success": false });        
+    }  
 
-exports.updatePost = (req, res) => {
-    res.send("TODO: update post");
-}
-
-exports.deletePost = (req, res) => {
-    res.send("TODO: delete post");
+    try{
+        Post.addPost(content, author)
+            .then(res.send({ "success:": true }));
+    } catch {
+        res.send({ "success": false });
+    }
 }
 
 exports.getPosts = (req, res) => {
-    Post.GetPosts()
+    try{
+        Post.getPosts()
         .then((response) => {
-            res.send(response);
+            res.send({ "success": true, data: response });
         });
+    } catch {
+        res.send( {"success": false });
+    }
+    
+}
+
+exports.updatePost = (req, res) => {
+    const { id, content } = req.body;
+
+    if (id == null || content == null){
+        res.send({ "success": false });
+    }
+
+    try{
+        Post.updatePost(id, content)
+            .then((success) => {
+                if(success){
+                    res.send({ "success": true });
+                } else {
+                    res.send({ "success": false });
+                }
+            });
+    } catch {
+        console.log();
+    }
+}
+
+exports.deletePost = (req, res) => {
+    const { id } = req.body;
+
+    if(id == null){
+        res.send({ "success": false });
+    }
+
+    try{
+        Post.deletePost(req.params.id)
+        .then((postDeleted) => {
+            res.send({ "success": postDeleted });
+        });
+    } catch {
+        res.send({ "success": false })
+    }
 }

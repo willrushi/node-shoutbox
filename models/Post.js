@@ -21,48 +21,44 @@ const PostSchema = new Schema({
 // Make a model from the schema and set it as the module export
 const PostModel = module.exports = mongoose.model("PostModel", PostSchema);
 
-module.exports.AddPost = (content, author) => {
-    PostModel.create({ content: content, author: author }, (err, result) => {
-        if (err){
-            
-        }
-        console.log(`Added new post by ${author} at ${Date.now()}.`);
-        return;
-    });
+module.exports.addPost = async (content, author) => {
+    try{
+        const result = await PostModel.create({ content: content, author: author });
+        return true;
+    }
+    catch{
+        return false;
+    }
 }
-/*
-module.exports.GetPosts = async () => {
-    await PostModel.find({}, (err, result) => {
-        if(err){
-            throw err;
-        }
-        console.log("fetching posts");
+
+module.exports.getPosts = async () => {
+    try{
+        const result = await PostModel.find({});
         return result;
-    });
-}
-*/
-module.exports.GetPosts = async () => {
-    const result = await PostModel.find({});
-    return result;
+    }
+    catch{
+        return false;
+    }
 }
 
-module.exports.UpdatePost = (id, content) => {
-    PostModel.updateOne({ _id: id }, { content: content }, (err, docs) => {
-        if(err){
-            throw err;
-        }else{
-            return docs;
-        }
-    });
-    return;
+module.exports.updatePost = async (id, content) => {
+    try{
+        const result = await PostModel.updateOne({ _id: id }, { content: content });
+        console.log(result);
+        return result.nModified > 0;
+    }
+    catch(e){
+        return false;
+    }
+    
 }
 
-module.exports.DeletePost = (id) => {
-    PostModel.deleteOne({ _id: id }, (err) => {
-        if(err){
-            throw err;
-        }else{
-            return;
-        }
-    });
+module.exports.deletePost = async (id) => {
+    try{
+        const result = await PostModel.deleteOne({ _id: id });
+        return result.deletedCount > 0;
+    } 
+    catch{
+        return false;
+    }
 }

@@ -20,7 +20,7 @@ const apiRouter = require("./routes/api");
 
 // Set up public folder and bodyparser
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Implement routers

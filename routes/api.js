@@ -13,7 +13,7 @@ router.post("/new", apiController.newPost);
 router.post("/update", apiController.updatePost);
 
 // Delete a post by its ID
-router.post("/delete/:id", apiController.deletePost);
+router.get("/delete/:id", apiController.deletePost);
 
 // Get all posts
 router.get("/get", apiController.getPosts);
