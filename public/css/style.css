@@ -1,0 +1,90 @@
+body, html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+nav{
+    height: 5rem;
+    box-sizing: border-box;
+    padding: 20px 10px;
+    background: rgb(71, 70, 77);
+}
+
+nav h1{
+    margin: 0;
+    color: rgb(241, 236, 236);
+}
+
+.container{
+    width: 100%;
+    height: calc(100% - 5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shoutbox{
+    width: 500px;
+    height: 600px;
+    background:rgb(180, 179, 187);
+    padding: 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.shouts{
+    height: 90%;
+    width: 100%;
+    background: rgb(253, 252, 252);
+}
+
+.shout{
+    height: 2rem;
+}
+
+.shout:nth-child(odd){
+    background: rgb(188, 210, 219);
+}
+
+.bottom{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    background: rgb(235, 231, 231);
+    
+}
+
+.input{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.name{
+    width: 100%;
+    height: 40%;
+    padding: 0 0 0 10px;
+}
+
+.message{
+    width: 100%;
+    height: 60%;
+    padding: 0 0 0 10px;
+}
+
+.submit{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input{
+    padding: 0;
+    margin: 0;
+    border: none;
+}

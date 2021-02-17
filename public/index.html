@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
-    test
+    <nav>
+        <h1>node-shoutbox</h1>
+    </nav>
+
+    <div class="container">
+        <div class="shoutbox">
+            <div class="shouts" id="shouts">
+            </div>
+            <div class="bottom">
+                <div class="input">
+                    <div class="name">
+                        Name: 
+                        <input id="nameBox">
+                    </div>
+                    <div class="message">
+                        Message: 
+                        <input id="messageBox">
+                    </div>
+                </div>
+                <div class="submit">
+                    <button id="submit">Submit</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
 </body>
 </html>
