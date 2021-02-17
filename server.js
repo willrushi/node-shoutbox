@@ -1,8 +1,16 @@
 const express = require("express"),
-    bodyParser = require('body-parser');
+    bodyParser = require("body-parser"),
+    mongoose = require("mongoose");
 
 // Instantiate an express app
 const app = express();
+
+// MongoDB URL
+const mongoDB = "mongodb+srv://dbUser:AVvZxpcletpTU3DZ@node-sandbox.y7jy9.mongodb.net/node-shoutbox?retryWrites=true&w=majority";
+mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
+mongoose.set('useCreateIndex', true);
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 // Import the routers

@@ -1,5 +1,8 @@
+const Post = require("../models/Post");
+
 exports.newPost = (req, res) => {
-    res.send("TODO: new post");
+    Post.AddPost("test","Will");
+    res.send("added post");
 }
 
 exports.updatePost = (req, res) => {
@@ -11,5 +14,8 @@ exports.deletePost = (req, res) => {
 }
 
 exports.getPosts = (req, res) => {
-    res.send("TODO: get posts");
+    Post.GetPosts()
+        .then((response) => {
+            res.send(response);
+        });
 }
