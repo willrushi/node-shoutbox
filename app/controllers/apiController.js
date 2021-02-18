@@ -1,5 +1,11 @@
 const Post = require("../models/Post");
 
+/**
+ * Adds a new post to the database.
+ * 
+ * @param {string} req.content - The post content to be inserted
+ * @param {string} req.author - The author of the post
+ */
 exports.newPost = (req, res) => {
     const { content, author } = req.body;
     
@@ -19,6 +25,10 @@ exports.newPost = (req, res) => {
     return;
 }
 
+
+/**
+ * Retrieves all posts from the database and sends them as json.
+ */
 exports.getPosts = (req, res) => {
     try{
         Post.getPosts()
@@ -32,6 +42,13 @@ exports.getPosts = (req, res) => {
     return;    
 }
 
+
+/**
+ * Updates a post in the database.
+ * 
+ * @param {string} req.id - The ID of the post to be updated
+ * @param {string} req.content - The content to update the post with
+ */
 exports.updatePost = (req, res) => {
     const { id, content } = req.body;
 
@@ -58,6 +75,12 @@ exports.updatePost = (req, res) => {
     return;
 }
 
+
+/**
+ * Deletes a post from the database.
+ * 
+ * @param {string} req.id - The post ID to be deleted
+ */
 exports.deletePost = (req, res) => {
     const { id } = req.params;
 
