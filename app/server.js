@@ -11,8 +11,14 @@ require("dotenv").config()
 
 
 // MongoDB connection
-const mongoDB = process.env.MONGO_URL;
-mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
+const { 
+  MONGO_USER,
+  MONGO_PASS,
+  MONGO_URL  
+} = process.env;
+const connectString = `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@${MONGO_URL}?retryWrites=true&w=majority`;
+console.log(connectString);
+mongoose.connect(connectString, { useNewUrlParser: true , useUnifiedTopology: true});
 mongoose.set('useCreateIndex', true);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
