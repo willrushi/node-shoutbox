@@ -34,6 +34,16 @@ app.use("/", indexRouter);
 app.use("/api", apiRouter);
 
 
+// Don't leak stack traces to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.json({'errors': {
+      message: err.message,
+      error: {}
+    }});
+  });
+
+  
 // Start the server
 const server = app.listen( process.env.PORT || 8000, () => {
     console.log(`Listening on port ${server.address().port}`);

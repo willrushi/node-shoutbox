@@ -59,7 +59,7 @@ module.exports.updatePost = async (id, content) => {
 // Delete a post by its ID. Returns bool success
 module.exports.deletePost = async (id) => {
     try{
-        console.log(`Deleting ${id}`)
+        console.log(`Deleting ${id}`);
         const result = await PostModel.deleteOne({ _id: id });
         return result.deletedCount > 0;
     } 
